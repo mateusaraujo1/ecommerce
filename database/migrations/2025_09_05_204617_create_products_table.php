@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->decimal('price', 10, 2);
             $table->longText('description')->nullable();
-            $table->string('images')->nullable();
+            $table->json('images')->nullable();
 
             //status
             $table->boolean('is_active')->default(true);
