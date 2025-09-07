@@ -18,7 +18,7 @@ class CategoryForm
         return $schema
             ->components([
                 Section::make([
-                    Grid::make(1)
+                    Grid::make(2)
                         ->schema([
                             TextInput::make('name')
                                 ->required()
@@ -43,6 +43,8 @@ class CategoryForm
                                 ->default(true),
                         ])
                 ])
-            ]);
+                
+            ])
+            ->columns(1);
     }
 }

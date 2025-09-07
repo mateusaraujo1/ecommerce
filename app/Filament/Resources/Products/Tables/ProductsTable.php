@@ -1,55 +1,55 @@
 <?php
 
-namespace App\Filament\Resources\Brands\Tables;
+namespace App\Filament\Resources\Products\Tables;
 
-use Filament\Actions\ActionGroup;
 use Filament\Actions\BulkActionGroup;
-use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
-use Filament\Actions\ViewAction;
 use Filament\Tables\Columns\IconColumn;
-use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
-class BrandsTable
+class ProductsTable
 {
     public static function configure(Table $table): Table
     {
         return $table
             ->columns([
                 TextColumn::make('name')
-                    ->searchable()
-                    ->alignCenter(),
-                ImageColumn::make('image')
-                    ->alignCenter(),
+                    ->searchable(),
                 TextColumn::make('slug')
-                    ->searchable()
-                    ->alignCenter(),
+                    ->searchable(),
+                TextColumn::make('price')
+                    ->money()
+                    ->sortable(),
                 IconColumn::make('is_active')
-                    ->boolean()
-                    ->alignCenter(),
+                    ->boolean(),
+                IconColumn::make('is_featured')
+                    ->boolean(),
+                IconColumn::make('in_stock')
+                    ->boolean(),
+                IconColumn::make('on_sale')
+                    ->boolean(),
+                TextColumn::make('category_id')
+                    ->numeric()
+                    ->sortable(),
+                TextColumn::make('brand_id')
+                    ->numeric()
+                    ->sortable(),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
-                    ->alignCenter()
                     ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('updated_at')
                     ->dateTime()
                     ->sortable()
-                    ->alignCenter()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 //
             ])
             ->recordActions([
-                ActionGroup::make([
-                    ViewAction::make(),
-                    DeleteAction::make(),
-                    EditAction::make(),
-                ]),
+                EditAction::make(),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
