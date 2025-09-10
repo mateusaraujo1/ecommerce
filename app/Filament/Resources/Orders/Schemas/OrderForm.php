@@ -96,7 +96,7 @@ class OrderForm
                     ])->columns(2),
 
                     Section::make('Order Items')->schema([
-                        Repeater::make('Items')
+                        Repeater::make('items')
                             ->relationship()
                             ->schema([
 
@@ -133,27 +133,22 @@ class OrderForm
                                     ->required()
                                     ->dehydrated()
                                     ->columnSpan(3)
-                            ])->columns(12)
-                            ->reactive()
-                            ->afterStateUpdated(function (Get $get, Set $set) {
-                                $total = 0;
-                                $items = $get('Items');
-
-                                if ($items) {
+                            ])->columns(12),
+                            
+                            Placeholder::make('grand_total_placeholder')
+                                ->label('Grand Total')
+                                ->content(function (Get $get, Set $set) {
                                     $total = 0;
-                                    foreach ($items as $item) {
-                                        $total += $item['total_amount'] ?? 0;
+                                    if (!$repeaters = $get('items')) {
+                                        return $total;
                                     }
-                                }
 
-                                $set('grand_total', $total);
-                            }),
-                            TextInput::make('grand_total')
-                                ->label('Total Geral')
-                                ->prefix('R$')
-                                ->numeric(2)
-                                ->disabled()
-                                ->dehydrated(false),
+                                    foreach ($repeaters as $key => $repeater) {
+                                        $total += $get("items.{$key}.total_amount");
+                                    }
+
+                                    return Number::currency($total, 'BRL');
+                                })
                     ])
                 ])->columnSpanFull()
             ])
