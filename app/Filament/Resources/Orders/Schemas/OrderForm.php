@@ -2,13 +2,21 @@
 
 namespace App\Filament\Resources\Orders\Schemas;
 
+use App\Models\Product;
+use Filament\Forms\Components\Placeholder;
+use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\ToggleButtons;
 use Filament\Schemas\Components\Group;
 use Filament\Schemas\Components\Section;
+use Filament\Schemas\Components\Utilities\Get;
+use Filament\Schemas\Components\Utilities\Set;
 use Filament\Schemas\Schema;
+use Illuminate\Support\Number;
+
+use function Laravel\Prompts\textarea;
 
 class OrderForm
 {
@@ -73,7 +81,79 @@ class OrderForm
                                 'inr' => 'INR'
                             ])
                             ->default('brl')
-                            ->required()
+                            ->required(),
+
+                        Select::make('shipping_method')
+                            ->options([
+                                'sedex' => 'Sedex',
+                                'correios' => 'Correios',
+                                'transportadora' => 'Transportadora'
+                            ])
+                            ->required(),
+
+                        textarea::make('notes')
+                        ->columnSpanFull()
+                    ])->columns(2),
+
+                    Section::make('Order Items')->schema([
+                        Repeater::make('Items')
+                            ->relationship()
+                            ->schema([
+
+                                Select::make('product_id')
+                                    ->relationship('product', 'name')
+                                    ->searchable()
+                                    ->preload()
+                                    ->required()
+                                    ->distinct()
+                                    ->disableOptionsWhenSelectedInSiblingRepeaterItems()
+                                    ->columnSpan(4)
+                                    ->reactive()
+                                    ->afterStateUpdated(fn ($state, Set $set) => $set('unit_amount', Product::find($state) ?->price ?? 0))
+                                    ->afterStateUpdated(fn ($state, Set $set) => $set('total_amount', Product::find($state) ?->price ?? 0)),
+
+                                TextInput::make('quantity')
+                                    ->numeric()
+                                    ->required()
+                                    ->default(1)
+                                    ->minValue(1)
+                                    ->columnSpan(2)
+                                    ->reactive()
+                                    ->afterStateUpdated(fn ($state, Set $set, Get $get) => $set('total_amount', $state*$get('unit_amount'))),
+
+                                TextInput::make('unit_amount')
+                                    ->numeric()
+                                    ->required()
+                                    ->disabled()
+                                    ->dehydrated()
+                                    ->columnSpan(3),
+
+                                TextInput::make('total_amount')
+                                    ->numeric()
+                                    ->required()
+                                    ->dehydrated()
+                                    ->columnSpan(3)
+                            ])->columns(12)
+                            ->reactive()
+                            ->afterStateUpdated(function (Get $get, Set $set) {
+                                $total = 0;
+                                $items = $get('Items');
+
+                                if ($items) {
+                                    $total = 0;
+                                    foreach ($items as $item) {
+                                        $total += $item['total_amount'] ?? 0;
+                                    }
+                                }
+
+                                $set('grand_total', $total);
+                            }),
+                            TextInput::make('grand_total')
+                                ->label('Total Geral')
+                                ->prefix('R$')
+                                ->numeric(2)
+                                ->disabled()
+                                ->dehydrated(false),
                     ])
                 ])->columnSpanFull()
             ])
