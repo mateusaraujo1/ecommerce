@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\Orders\Schemas;
 
 use App\Models\Product;
+use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Select;
@@ -147,8 +148,15 @@ class OrderForm
                                         $total += $get("items.{$key}.total_amount");
                                     }
 
-                                    return Number::currency($total, 'BRL');
-                                })
+                                    $set('grand_total', $total);
+
+                                    $currency = $get('currency') ?? 'BRL';
+
+                                    return Number::currency($total, $currency);
+                                }),
+
+                            Hidden::make('grand_total')
+                                ->default(0)
                     ])
                 ])->columnSpanFull()
             ])
