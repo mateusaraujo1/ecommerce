@@ -8,6 +8,9 @@ services:
         GID: ${GID:-1000}
     container_name: laravel_app
     restart: unless-stopped
+    environment:
+      # ✅ Adicionado para desativar o Xdebug
+      XDEBUG_MODE: "off"
     working_dir: /var/www/html
     volumes:
       - ./:/var/www/html
