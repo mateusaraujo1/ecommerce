@@ -17,6 +17,7 @@ class UsersTable
         return $table
             ->columns([
                 TextColumn::make('name')
+                    ->searchable(isGlobal: true)
                     ->searchable(),
                 TextColumn::make('email')
                     ->label('Email address')
