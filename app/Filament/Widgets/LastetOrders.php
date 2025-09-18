@@ -24,19 +24,18 @@ class LastetOrders extends TableWidget
             ->query(OrderResource::getEloquentQuery())
             ->defaultPaginationPageOption(5)
             ->columns([
-                TextColumn::make('id')
-                    ->label('Order ID')
-                    ->searchable(),
-
                 TextColumn::make('user.name')
+                    ->alignCenter()
                     ->searchable(),
 
                 TextColumn::make('grand_total')
                     ->money(fn (Order $record): string => $record->currency)
+                    ->alignCenter()
                     ->searchable(),
 
                 TextColumn::make('status')
                     ->badge()
+                    ->alignCenter()
                     ->color(fn (string $state):string => match($state){
                         'new' => 'info',
                         'processing' => 'warning',
@@ -55,15 +54,23 @@ class LastetOrders extends TableWidget
 
                 TextColumn::make('payment_method')
                     ->sortable()
+                    ->alignCenter()
                     ->searchable(),
 
                 TextColumn::make('payment_status')
                     ->sortable()
                     ->badge()
+                    ->color(fn (string $state):string => match($state){
+                        'pending' => 'warning',
+                        'paid' => 'success',
+                        'failed' => 'danger'
+                    })
+                    ->alignCenter()
                     ->searchable(),
 
-                TextColumn::make('create_at')
+                TextColumn::make('created_at')
                     ->label('Order Date')
+                    ->alignCenter()
                     ->dateTime(),
             ])
             ->filters([

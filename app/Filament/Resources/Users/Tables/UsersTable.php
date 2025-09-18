@@ -18,20 +18,25 @@ class UsersTable
             ->columns([
                 TextColumn::make('name')
                     ->searchable(isGlobal: true)
+                    ->alignCenter()
                     ->searchable(),
                 TextColumn::make('email')
                     ->label('Email address')
+                    ->alignCenter()
                     ->searchable(),
                 TextColumn::make('email_verified_at')
                     ->dateTime()
+                    ->alignCenter()
                     ->sortable(),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
+                    ->alignCenter()
                     ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('updated_at')
                     ->dateTime()
                     ->sortable()
+                    ->alignCenter()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([

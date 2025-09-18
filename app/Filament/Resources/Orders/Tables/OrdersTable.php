@@ -21,20 +21,24 @@ class OrdersTable
                 TextColumn::make('user.name')
                     ->label('Costumer')
                     ->sortable()
+                    ->alignCenter()
                     ->searchable(),
 
                 TextColumn::make('grand_total')
                     ->numeric()
                     ->searchable()
                     ->money(fn (Order $record): string => $record->currency)
+                    ->alignCenter()
                     ->sortable(),
 
                 TextColumn::make('payment_method')
                     ->searchable()
+                    ->alignCenter()
                     ->sortable(),
 
                 TextColumn::make('payment_status')
                     ->searchable()
+                    ->alignCenter()
                     ->sortable(),
 
                 SelectColumn::make('status')
@@ -46,28 +50,34 @@ class OrdersTable
                         'canceled' => 'Canceled'
                     ])
                     ->searchable()
+                    ->alignCenter()
                     ->sortable(),
 
                 TextColumn::make('currency')
                     ->searchable()
+                    ->alignCenter()
                     ->sortable(),
 
                 TextColumn::make('shipping_amount')
                     ->numeric()
+                    ->alignCenter()
                     ->sortable(),
 
                 TextColumn::make('shipping_method')
                     ->searchable()
+                    ->alignCenter()
                     ->sortable(),
 
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
+                    ->alignCenter()
                     ->toggleable(isToggledHiddenByDefault: true),
 
                 TextColumn::make('updated_at')
                     ->dateTime()
                     ->sortable()
+                    ->alignCenter()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
