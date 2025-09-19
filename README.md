@@ -1,61 +1,29 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<h2>ecommerce</h2>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+<p>Sistema de Ecommerce feito em Laravel, nele inclui:</p>
+<ul>
+    <li>Painel Administrativo
+    <ul>
+        <li> Dashboard Intuitivo: Com estatísticas de pedidos e vendas. 
+        <li> Gestão de Catálogo: CRUD completo para Produtos, Categorias e Marcas, incluindo upload de múltiplas imagens. 
+        <li> Sistema de Pedidos: Criação e edição de pedidos, com cálculo de totais em tempo real e atualização de status (Processando, Enviado, Entregue).
+    </ul>
+    <li>Painel do Usuário
+        <ul>
+            <li> em andamento...
+        </ul>
+</ul>
 
-## About Laravel
+<h2>imagens do painel administrativo</h2>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
-
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
-
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
-
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+![1758201313855 (1)](https://github.com/user-attachments/assets/9e775f40-c9f1-4763-9657-c906fcacd768)
+![1758201314008](https://github.com/user-attachments/assets/8cd9cbcd-1ed1-4237-8546-401a72c0b106)
+![1758201313531](https://github.com/user-attachments/assets/a89c38c0-9631-4113-a6d0-948c44a083f3)
+![1758201313876](https://github.com/user-attachments/assets/7842cd25-27c2-499a-a6f7-a38250f79d23)
+![1758201314121](https://github.com/user-attachments/assets/a890f777-cb71-4985-b728-31d0711e7cca)
+![1758201313833](https://github.com/user-attachments/assets/67b43a65-63e8-48d8-9960-2d61c756ae69)
+![1758201313806](https://github.com/user-attachments/assets/17f4a8ff-e95d-43d8-8724-8548badc4490)
+![1758201313807](https://github.com/user-attachments/assets/4ad1dc70-60a3-484e-8be8-75e1208b1896)
+![1758201313830](https://github.com/user-attachments/assets/19e9ef49-b513-48c1-bc51-128065042b37)
+![1758201313749](https://github.com/user-attachments/assets/ab497d2f-a363-44b9-aca5-1ed0b87dc376)
+![1758201313642](https://github.com/user-attachments/assets/957f78f1-b356-4dde-a745-2ce770a1781b)
